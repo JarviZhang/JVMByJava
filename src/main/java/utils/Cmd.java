@@ -1,5 +1,8 @@
+package utils;
+
 /*
 * 实现Cmd功能,接收用户输入指令
+* 封装指令内容与指令类型，用户后续jvm处理该指令
 * 实现指令:
 * 1. java -version
 * 2. java -?
@@ -13,7 +16,7 @@ public class Cmd {
     private boolean helpFlag; //是否是help(查看帮助)
     private boolean versionFlag; //是否是查看版本
     private String cpOption = ""; //classPath的路径
-    private String className; //要编译的class文件
+    private String clazz; //要编译的class文件
     private String[] args; //要执行的class文件需要的参数
     private String XjreOption; // jre路径
 
@@ -50,16 +53,19 @@ public class Cmd {
                     isRightFmt = false;
                 }
                 index = 4;
-                XjreOption = args[2];
+                this.XjreOption = args[2];
             }
         }
-        className  = args[index - 1];
+        clazz  = args[index - 1];
         this.args = new String[args.length - index];
         for(int i = index; i < args.length; i++){
             this.args[i - index] = args[i];
         }
     }
 
+    /*
+    * 打印正确的命令格式
+    * */
     public void printUsage(){
         System.out.println("Usage: java [-option] class [args...]\n");
     }
@@ -78,5 +84,17 @@ public class Cmd {
 
     public String[] getArgs() {
         return args;
+    }
+
+    public String getXjreOption() {
+        return XjreOption;
+    }
+
+    public String getCpOption() {
+        return cpOption;
+    }
+
+    public String getClazz() {
+        return clazz;
     }
 }
