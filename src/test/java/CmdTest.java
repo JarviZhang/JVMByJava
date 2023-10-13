@@ -5,7 +5,6 @@ import utils.Cmd;
 * 这里对ch01的命令行工具进行测试
 * */
 public class CmdTest {
-
     /*
     * 测试三条指令
     * java -version

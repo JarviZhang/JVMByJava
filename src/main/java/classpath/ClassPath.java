@@ -3,7 +3,9 @@ package classpath;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+/*
+* 启动类路径、扩展类路径、用户类路径的实体类
+* */
 public class ClassPath {
     //jre路径
     private String jreDir;

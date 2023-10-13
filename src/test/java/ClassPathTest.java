@@ -23,6 +23,12 @@ public class ClassPathTest {
         getInsert(cmd.split(" "));
     }
 
+    @Test
+    public void test4(){
+        String cmd = "java -cp D:\\importantThing\\mycode\\project\\JVMByJava\\target\\test-classes ClassFileTest";
+        getInsert(cmd.split(" "));
+    }
+
     /*
     * 启动类路径、扩展类路径为D:\myFile\Java\jdk1.8.0_361，用户类路径为当前路径
     * 测试HelloWorldForTest类
@@ -57,7 +63,7 @@ public class ClassPathTest {
                         if (i %20 == 0){
                             System.out.println();
                         }
-                        System.out.printf("%04X", classData[i], 16);
+                        System.out.printf("%02X", classData[i], 16);
                     }
                 } catch (FileNotFoundException e){
                     System.out.println("can not find class file");
