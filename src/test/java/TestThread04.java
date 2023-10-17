@@ -5,7 +5,7 @@ import runtimeData.OperandStack;
 import java.time.LocalDate;
 
 /*
-* 运行时数据区-线程相关
+* 运行时数据区-线程相关的测试
 * */
 public class TestThread04 {
     //测试局部变量表

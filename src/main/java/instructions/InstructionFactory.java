@@ -1,42 +1,57 @@
 package instructions;
 
+import instructions.base.Instruction;
+import instructions.comparisons.ifacmp.IF_ACMPNE;
+import instructions.comparisons.ificmp.*;
+import instructions.constants.*;
+import instructions.control.GOTO;
+import instructions.control.IRETURN;
+import instructions.loads.loaddouble.*;
+import instructions.loads.loadfloat.*;
+import instructions.loads.loadint.*;
+import instructions.loads.loadlong.*;
+import instructions.loads.loadref.*;
+import instructions.math.add.*;
+import instructions.math.iinc.IINC;
+import instructions.stores.storeint.*;
+
 public class InstructionFactory {
-//    static NOP nop = new NOP();
-//    static ACONST_NULL aconst_null = new ACONST_NULL();
-//    static ICONST_M1 iconst_m1 = new ICONST_M1();
-//    static ICONST_0 iconst_0 = new ICONST_0();
-//    static ICONST_1 iconst_1 = new ICONST_1();
-//    static ICONST_2 iconst_2 = new ICONST_2();
-//    static ICONST_3 iconst_3 = new ICONST_3();
-//    static ICONST_4 iconst_4 = new ICONST_4();
-//    static ICONST_5 iconst_5 = new ICONST_5();
-//    static LCONST_0 lconst_0 = new LCONST_0();
-//    static LCONST_1 lconst_1 = new LCONST_1();
-//    static FCONST_0 fconst_0 = new FCONST_0();
-//    static FCONST_1 fconst_1 = new FCONST_1();
-//    static FCONST_2 fconst_2 = new FCONST_2();
-//    static DCONST_0 dconst_0 = new DCONST_0();
-//    static DCONST_1 dconst_1 = new DCONST_1();
-//    static ILOAD_0 iload_0 = new ILOAD_0();
-//    static ILOAD_1 iload_1 = new ILOAD_1();
-//    static ILOAD_2 iload_2 = new ILOAD_2();
-//    static ILOAD_3 iload_3 = new ILOAD_3();
-//    static LLOAD_0 lload_0 = new LLOAD_0();
-//    static LLOAD_1 lload_1 = new LLOAD_1();
-//    static LLOAD_2 lload_2 = new LLOAD_2();
-//    static LLOAD_3 lload_3 = new LLOAD_3();
-//    static FLOAD_0 fload_0 = new FLOAD_0();
-//    static FLOAD_1 fload_1 = new FLOAD_1();
-//    static FLOAD_2 fload_2 = new FLOAD_2();
-//    static FLOAD_3 fload_3 = new FLOAD_3();
-//    static DLOAD_0 dload_0 = new DLOAD_0();
-//    static DLOAD_1 dload_1 = new DLOAD_1();
-//    static DLOAD_2 dload_2 = new DLOAD_2();
-//    static DLOAD_3 dload_3 = new DLOAD_3();
-//    static ALOAD_0 aload_0 = new ALOAD_0();
-//    static ALOAD_1 aload_1 = new ALOAD_1();
-//    static ALOAD_2 aload_2 = new ALOAD_2();
-//    static ALOAD_3 aload_3 = new ALOAD_3();
+    static NOP nop = new NOP();
+    static ACONST_NULL aconst_null = new ACONST_NULL();
+    static ICONST_M1 iconst_m1 = new ICONST_M1();
+    static ICONST_0 iconst_0 = new ICONST_0();
+    static ICONST_1 iconst_1 = new ICONST_1();
+    static ICONST_2 iconst_2 = new ICONST_2();
+    static ICONST_3 iconst_3 = new ICONST_3();
+    static ICONST_4 iconst_4 = new ICONST_4();
+    static ICONST_5 iconst_5 = new ICONST_5();
+    static LCONST_0 lconst_0 = new LCONST_0();
+    static LCONST_1 lconst_1 = new LCONST_1();
+    static FCONST_0 fconst_0 = new FCONST_0();
+    static FCONST_1 fconst_1 = new FCONST_1();
+    static FCONST_2 fconst_2 = new FCONST_2();
+    static DCONST_0 dconst_0 = new DCONST_0();
+    static DCONST_1 dconst_1 = new DCONST_1();
+    static ILOAD_0 iload_0 = new ILOAD_0();
+    static ILOAD_1 iload_1 = new ILOAD_1();
+    static ILOAD_2 iload_2 = new ILOAD_2();
+    static ILOAD_3 iload_3 = new ILOAD_3();
+    static LLOAD_0 lload_0 = new LLOAD_0();
+    static LLOAD_1 lload_1 = new LLOAD_1();
+    static LLOAD_2 lload_2 = new LLOAD_2();
+    static LLOAD_3 lload_3 = new LLOAD_3();
+    static FLOAD_0 fload_0 = new FLOAD_0();
+    static FLOAD_1 fload_1 = new FLOAD_1();
+    static FLOAD_2 fload_2 = new FLOAD_2();
+    static FLOAD_3 fload_3 = new FLOAD_3();
+    static DLOAD_0 dload_0 = new DLOAD_0();
+    static DLOAD_1 dload_1 = new DLOAD_1();
+    static DLOAD_2 dload_2 = new DLOAD_2();
+    static DLOAD_3 dload_3 = new DLOAD_3();
+    static ALOAD_0 aload_0 = new ALOAD_0();
+    static ALOAD_1 aload_1 = new ALOAD_1();
+    static ALOAD_2 aload_2 = new ALOAD_2();
+    static ALOAD_3 aload_3 = new ALOAD_3();
 //    static IALOAD iaload = new IALOAD();
 //    static LALOAD laload = new LALOAD();
 //    static FALOAD faload = new FALOAD();
@@ -45,8 +60,8 @@ public class InstructionFactory {
 //    static BALOAD baload = new BALOAD();
 //    static CALOAD caload = new CALOAD();
 //    static SALOAD saload = new SALOAD();
-//    static ISTORE_0 istore_0 = new ISTORE_0();
-//    static ISTORE_1 istore_1 = new ISTORE_1();
+    static ISTORE_0 istore_0 = new ISTORE_0();
+    static ISTORE_1 istore_1 = new ISTORE_1();
 //    static ISTORE_2 istore_2 = new ISTORE_2();
 //    static ISTORE_3 istore_3 = new ISTORE_3();
 //    static LSTORE_0 lstore_0 = new LSTORE_0();
@@ -82,7 +97,7 @@ public class InstructionFactory {
 //    static DUP2_X1 dup2_x1 = new DUP2_X1();
 //    static DUP2_X2 dup2_x2 = new DUP2_X2();
 //    static SWAP swap = new SWAP();
-//    static IADD iadd = new IADD();
+    static IADD iadd = new IADD();
 //    static LADD ladd = new LADD();
 //    static FADD fadd = new FADD();
 //    static DADD dadd = new DADD();
@@ -138,7 +153,7 @@ public class InstructionFactory {
 //    static FCMPG fcmpg = new FCMPG();
 //    static DCMPL dcmpl = new DCMPL();
 //    static DCMPG dcmpg = new DCMPG();
-//    static IRETURN ireturn = new IRETURN();
+    static IRETURN ireturn = new IRETURN();
 //    static LRETURN lreturn = new LRETURN();
 //    static FRETURN freturn = new FRETURN();
 //    static DRETURN dreturn = new DRETURN();
@@ -151,42 +166,42 @@ public class InstructionFactory {
 //    static INVOKE_NATIVE invoke_native = new INVOKE_NATIVE();
 //
 //
-//    public static Instruction createInstruction(int opCode) {
-//        switch (opCode) {
-//            case 0x00:
-//                return nop;
-//            case 0x01:
-//                return aconst_null;
-//            case 0x02:
-//                return iconst_m1;
-//            case 0x03:
-//                return iconst_0;
-//            case 0x04:
-//                return iconst_1;
-//            case 0x05:
-//                return iconst_2;
-//            case 0x06:
-//                return iconst_3;
-//            case 0x07:
-//                return iconst_4;
-//            case 0x08:
-//                return iconst_5;
-//            case 0x09:
-//                return lconst_0;
-//            case 0x0a:
-//                return lconst_1;
-//            case 0x0b:
-//                return fconst_0;
-//            case 0x0c:
-//                return fconst_1;
-//            case 0x0d:
-//                return fconst_2;
-//            case 0x0e:
-//                return dconst_0;
-//            case 0x0f:
-//                return dconst_1;
-//            case 0x10:
-//                return new BIPUSH();
+    public static Instruction createInstruction(int opCode) {
+        switch (opCode) {
+            case 0x00:
+                return nop;
+            case 0x01:
+                return aconst_null;
+            case 0x02:
+                return iconst_m1;
+            case 0x03:
+                return iconst_0;
+            case 0x04:
+                return iconst_1;
+            case 0x05:
+                return iconst_2;
+            case 0x06:
+                return iconst_3;
+            case 0x07:
+                return iconst_4;
+            case 0x08:
+                return iconst_5;
+            case 0x09:
+                return lconst_0;
+            case 0x0a:
+                return lconst_1;
+            case 0x0b:
+                return fconst_0;
+            case 0x0c:
+                return fconst_1;
+            case 0x0d:
+                return fconst_2;
+            case 0x0e:
+                return dconst_0;
+            case 0x0f:
+                return dconst_1;
+            case 0x10:
+                return new BIPUSH();
 //            case 0x11:
 //                return new SIPUSH();
 //            case 0x12:
@@ -205,46 +220,46 @@ public class InstructionFactory {
 //                return new DLOAD();
 //            case 0x19:
 //                return new ALOAD();
-//            case 0x1a:
-//                return iload_0;
-//            case 0x1b:
-//                return iload_1;
-//            case 0x1c:
-//                return iload_2;
-//            case 0x1d:
-//                return iload_3;
-//            case 0x1e:
-//                return lload_0;
-//            case 0x1f:
-//                return lload_1;
-//            case 0x20:
-//                return lload_2;
-//            case 0x21:
-//                return lload_3;
-//            case 0x22:
-//                return fload_0;
-//            case 0x23:
-//                return fload_1;
-//            case 0x24:
-//                return fload_2;
-//            case 0x25:
-//                return fload_3;
-//            case 0x26:
-//                return dload_0;
-//            case 0x27:
-//                return dload_1;
-//            case 0x28:
-//                return dload_2;
-//            case 0x29:
-//                return dload_3;
-//            case 0x2a:
-//                return aload_0;
-//            case 0x2b:
-//                return aload_1;
-//            case 0x2c:
-//                return aload_2;
-//            case 0x2d:
-//                return aload_3;
+            case 0x1a:
+                return iload_0;
+            case 0x1b:
+                return iload_1;
+            case 0x1c:
+                return iload_2;
+            case 0x1d:
+                return iload_3;
+            case 0x1e:
+                return lload_0;
+            case 0x1f:
+                return lload_1;
+            case 0x20:
+                return lload_2;
+            case 0x21:
+                return lload_3;
+            case 0x22:
+                return fload_0;
+            case 0x23:
+                return fload_1;
+            case 0x24:
+                return fload_2;
+            case 0x25:
+                return fload_3;
+            case 0x26:
+                return dload_0;
+            case 0x27:
+                return dload_1;
+            case 0x28:
+                return dload_2;
+            case 0x29:
+                return dload_3;
+            case 0x2a:
+                return aload_0;
+            case 0x2b:
+                return aload_1;
+            case 0x2c:
+                return aload_2;
+            case 0x2d:
+                return aload_3;
 //            case 0x2e:
 //                return iaload;
 //            case 0x2f:
@@ -271,10 +286,10 @@ public class InstructionFactory {
 //                return new DSTORE();
 //            case 0x3a:
 //                return new ASTORE();
-//            case 0x3b:
-//                return istore_0;
-//            case 0x3c:
-//                return istore_1;
+            case 0x3b:
+                return istore_0;
+            case 0x3c:
+                return istore_1;
 //            case 0x3d:
 //                return istore_2;
 //            case 0x3e:
@@ -345,8 +360,8 @@ public class InstructionFactory {
 //                return dup2_x2;
 //            case 0x5f:
 //                return swap;
-//            case 0x60:
-//                return iadd;
+            case 0x60:
+                return iadd;
 //            case 0x61:
 //                return ladd;
 //            case 0x62:
@@ -417,8 +432,8 @@ public class InstructionFactory {
 //                return ixor;
 //            case 0x83:
 //                return lxor;
-//            case 0x84:
-//                return new IINC();
+            case 0x84:
+                return new IINC();
 //            case 0x85:
 //                return i2l;
 //            case 0x86:
@@ -477,18 +492,18 @@ public class InstructionFactory {
 //                return new IF_ICMPNE();
 //            case 0xa1:
 //                return new IF_ICMPLT();
-//            case 0xa2:
-//                return new IF_ICMPGE();
+            case 0xa2:
+                return new IF_ICMPGE();
 //            case 0xa3:
 //                return new IF_ICMPGT();
 //            case 0xa4:
 //                return new IF_ICMPLE();
 //            case 0xa5:
 //                return new IF_ACMPEQ();
-//            case 0xa6:
-//                return new IF_ACMPNE();
-//            case 0xa7:
-//                return new GOTO();
+            case 0xa6:
+                return new IF_ACMPNE();
+            case 0xa7:
+                return new GOTO();
 //            // case 0xa8:
 //            // 	return new JSR();
 //            // case 0xa9:
@@ -497,8 +512,8 @@ public class InstructionFactory {
 //                return new TABLE_SWITCH();
 //            case 0xab:
 //                return new LOOKUP_SWITCH();
-//            case 0xac:
-//                return ireturn;
+            case 0xac:
+                return ireturn;
 //            case 0xad:
 //                return lreturn;
 //            case 0xae:
@@ -561,8 +576,8 @@ public class InstructionFactory {
 //            case 0xfe:
 //                return invoke_native;
 //            // case 0xff: impdep2
-//            default:
-//                throw new RuntimeException("Unsupported opcode: " + opCode);
-//        }
-//    }
+            default:
+                throw new RuntimeException("Unsupported opcode: " + opCode);
+        }
+    }
 }
